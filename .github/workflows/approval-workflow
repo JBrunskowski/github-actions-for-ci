@@ -1,12 +1,10 @@
 name: Team awesome's approval workflow
-
-on:
-  pull_request_review:
-    types: [submitted]
+on: [pull_request_review]
 
 jobs:
-  approved:
-    if: github.event.review.state == 'approved'
+  labelWhenApproved:
+    name: Label when approved
     runs-on: ubuntu-latest
     steps:
-      - run: echo "This PR was approved"
+    - name: Label when approved
+      uses: pullreminders/label-when-approved-action@master
